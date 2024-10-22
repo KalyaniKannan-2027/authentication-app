@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Welcome!</h2>
+        <p>You are logged in!</p>
+        <button id="logout-btn">Logout</button>
+    </div>
+
+    <script>
+        // Handle logout by removing the token and redirecting to the login page
+        const logoutBtn = document.getElementById('logout-btn');
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');  // Clear the token
+            window.location.href = 'login.html';  // Redirect to login page
+        });
+
+        // Check if the user is logged in by checking the presence of the token
+        const token = localStorage.getItem('token');
+        if (!token) {
+            // If no token found, redirect to the login page
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
